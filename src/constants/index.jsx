@@ -18,3 +18,71 @@ export const allItems = [
     {_id:"116",title:"Video Games"},
     {_id:"117",title:"Women's Fashion"},
 ]
+
+export const middleList = [
+    {
+        _id: 2221,
+        title: "Get to Know Us",
+        listItem: [
+            {
+                _id: "001",
+                listData: [
+                    "Careers",
+                    "Blog",
+                    "About Mercatura",
+                    "Investor Relations",
+                    "Devices",
+                ],
+            },
+        ],
+    },
+    {
+        _id: 2222,
+        title: "Make Money with Us",
+        listItem: [
+            {
+                _id: "002",
+                listData: [
+                    "Sell Products on Mercatura",
+                    "Sell on Mercatura Business",
+                    "Sell Apps on Mercatura",
+                    "Become an Affiliate",
+                    "Adverstise Your Products",
+                    "See More Make Money with Us",
+                ],
+            },
+        ],
+    },
+    {
+        _id: 2223,
+        title: "Payment Products",
+        listItem: [
+            {
+                _id: "003",
+                listData: [
+                    "Business Card",
+                    "Shop with Points",
+                    "Reload Your Balance",
+                    "Mercatura Currency Converter",
+                ],
+            },
+        ],
+    },
+    {
+        _id: 2224,
+        title: "Let Us Help You",
+        listItem: [
+            {
+                _id: "004",
+                listData: [
+                    "Your Account",
+                    "Your Orders",
+                    "Shipping Rates & Policies",
+                    "Returns & Replacements",
+                    "Manage Your Content & Devices",
+                    "FAQ & Help",
+                ],
+            },
+        ],
+    },
+]

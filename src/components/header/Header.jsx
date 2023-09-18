@@ -11,7 +11,7 @@ function Header() {
   const [showAll, setShowAll] = useState(false)
   
   return (
-    <div>
+    <div className='w-full'>
       <div className='w-full bg-black text-white px-4 py-3 flex items-center gap-4'>
         <div className='headerHover'>
             <img className='w-24 mt-2 ' src={logo} alt="logo" />
@@ -60,8 +60,8 @@ function Header() {
           <ShoppingBasketIcon />
           <p className='text-xs font-semibold mt-3 text-whiteText'>Basket <span className='absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-[#f3a847] text-black rounded-full flex justify-center items-center'>0</span></p>
         </div>
-        <HeaderBottom />
-      </div>  
+      </div>
+      <HeaderBottom />  
     </div>
   )
 }
