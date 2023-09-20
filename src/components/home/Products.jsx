@@ -23,7 +23,7 @@ function Products() {
   }, []);
 
   return (
-    <div className="max-w-screen-2xl mx-auto grid grid-cols-4 gap-10 px-4 -mt-24 py-10">
+    <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-10 px-4 -mt-13 xl:-mt-24 py-10">
       {products.map((product) => (
         <div
           className="bg-white h-auto border-[1px] border-gray-200 py-8 z-30 hover:border-transparent shadow-none hover:shadow-testShadow duration-200 flex flex-col gap-4 relative"

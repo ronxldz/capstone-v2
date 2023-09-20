@@ -70,7 +70,7 @@ function HeaderBottom() {
               />
               <span
                 onClick={() => setSidebar(false)}
-                className="cursor-pointer absolute top-0 left-[360px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300">
+                className="cursor-pointer absolute top-0 left-[82%]  md:left-[360px] w-10 h-10 text-black flex items-center justify-center border bg-gray-200 hover:bg-red-500 hover:text-white duration-300">
                 <CloseIcon />
               </span>
             </motion.div>

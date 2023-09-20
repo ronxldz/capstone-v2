@@ -6,6 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { logo } from "../../assets/index";
 import { allItems } from "../../constants";
 import HeaderBottom from "./HeaderBottom";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [showAll, setShowAll] = useState(false);
@@ -55,17 +56,19 @@ function Header() {
             <SearchIcon />
           </span>
         </div>
-        <div className="flex flex-col items-start justify-center headerHover">
-          <p className="text-sm mdl:text-xs text-white mdl:text-lightText font-light">
-            Hello, sign in
-          </p>
-          <p className="text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex">
-            Accounts & Lists{""}
-            <span>
-              <ArrowDropDownIcon />
-            </span>
-          </p>
-        </div>
+        <Link to="/signin">
+          <div className="flex flex-col items-start justify-center headerHover">
+            <p className="text-sm mdl:text-xs text-white mdl:text-lightText font-light">
+              Hello, sign in
+            </p>
+            <p className="text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex">
+              Accounts & Lists{""}
+              <span>
+                <ArrowDropDownIcon />
+              </span>
+            </p>
+          </div>
+        </Link>
         <div className="hidden lgl:flex flex-col items-start justify-center headerHover">
           <p className="text-xs text-lightText font-light">Returns</p>
           <p className="text-sm font-semibold -mt-1 text-whiteText ">
