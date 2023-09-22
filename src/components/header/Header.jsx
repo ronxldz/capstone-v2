@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 function Header() {
   const [showAll, setShowAll] = useState(false);
-  const products = useSelector((state) => state.sliceReducer.products);
+  const products = useSelector((state) => state.mercatura.products);
 
   return (
     <div className="w-full sticky top-0 z-50">
