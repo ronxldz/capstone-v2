@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Banner from "./components/home/Banner";
 import Footer from "./components/footer/Footer";
@@ -18,17 +18,15 @@ function Home() {
 
 function App() {
   return (
-    <Router>
-      <div className="font-bodyFont bg-gray-100">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/basket" element={<Basket />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div className="font-bodyFont bg-gray-100">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/basket" element={<Basket />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
