@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 import Products from "./components/home/Products";
 import SignIn from "./pages/SignIn";
 import Basket from "./pages/Basket";
+import Registration from "./pages/Registration";
 
 function Home() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path="/signup" element={<Registration />} />
       </Routes>
       <Footer />
     </div>

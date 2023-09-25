@@ -12,6 +12,7 @@ function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchProducts() {
       try {
         const response = await fetch("https://fakestoreapi.com/products");
