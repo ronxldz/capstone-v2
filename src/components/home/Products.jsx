@@ -6,7 +6,6 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../redux/Slice";
-import { Link } from "react-router-dom";
 
 function Products() {
   const dispatch = useDispatch();
@@ -61,6 +60,7 @@ function Products() {
                   <ArrowCircleRightIcon />
                 </span>
               </li>
+
               <li className="productLi">
                 Add to Wish List{" "}
                 <span>

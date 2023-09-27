@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   userInfo: null,
-  selectedProducts: [],
 };
 
 export const slice = createSlice({
@@ -42,20 +41,6 @@ export const slice = createSlice({
     userSignOut: (state) => {
       state.userInfo = null;
     },
-    addProductToSelectedProducts: (state, action) => {
-      const { id, title, description, price, category, image, quantity } =
-        action.payload;
-      const newItem = {
-        id,
-        title,
-        description,
-        price,
-        category,
-        image,
-        quantity,
-      };
-      state.selectedProducts.push(newItem);
-    },
   },
 });
 
@@ -67,6 +52,5 @@ export const {
   incrementQuantity,
   setUserInfo,
   userSignOut,
-  addProductToSelectedProducts,
 } = slice.actions;
 export default slice.reducer;
