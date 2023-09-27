@@ -92,7 +92,7 @@ function Registration() {
           });
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+
           setTimeout(() => {
             navigate("/signin");
           }, 3000);
@@ -111,7 +111,6 @@ function Registration() {
   };
 
   const isValidEmail = (email) => {
-    // Regular expression for email validation
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email);
   };

@@ -46,7 +46,6 @@ function SignIn() {
             email: user.email,
           })
         );
-        // console.log(user);
         setLoggedIn(true);
         setFormData({
           email: "",
