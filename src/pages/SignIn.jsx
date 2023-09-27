@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../components/redux/Slice";
 
 function SignIn() {
+  const dipatch = useDispatch();
+  const auth = getAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [signInError, setSignInError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,18 +24,55 @@ function SignIn() {
     });
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSignIn = (e) => {
     e.preventDefault();
 
-    // Perform your sign-in logic here
-    // For demonstration purposes, we're setting loggedIn to true after 2 seconds
-    setTimeout(() => {
-      setLoggedIn(true);
-      setFormData({
-        email: "",
-        password: "",
+    // Extract email and password from formData
+    const { email, password } = formData;
+
+    // Call signInWithEmailAndPassword
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in successfully
+        const user = userCredential.user;
+        dipatch(
+          setUserInfo({
+            _id: user.uid,
+            userName: user.displayName,
+            email: user.email,
+          })
+        );
+        // console.log(user);
+        setLoggedIn(true);
+        setFormData({
+          email: "",
+          password: "",
+        });
+        setSignInError(null); // Clear any previous sign-in error
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      })
+      .catch((error) => {
+        // Handle sign-in error
+        const errorCode = error.code;
+        let errorMessage = "Invalid login"; // Default error message
+
+        // Customize error message based on error code (add more cases as needed)
+        if (errorCode === "auth/user-not-found") {
+          errorMessage =
+            "User not found. Please check your email and try again.";
+        } else if (errorCode === "auth/wrong-password") {
+          errorMessage = "Wrong password. Please try again.";
+        }
+
+        setSignInError(errorMessage);
+        setLoggedIn(false);
       });
-    }, 2000);
   };
 
   return (
@@ -39,12 +84,7 @@ function SignIn() {
               Sign In
             </h2>
             <div className="flex flex-col gap-3">
-              {renderInput(
-                "Email or Mobile Phone Number",
-                "email",
-                formData.email,
-                handleChange
-              )}
+              {renderInput("Email", "email", formData.email, handleChange)}
               {renderInput(
                 "Password",
                 "password",
@@ -59,6 +99,11 @@ function SignIn() {
               {loggedIn && (
                 <p className="text-green-500 text-sm font-semibold mb-2">
                   Successfully logged in!
+                </p>
+              )}
+              {signInError && (
+                <p className="text-red-500 text-sm font-semibold mb-2">
+                  {signInError}
                 </p>
               )}
             </div>

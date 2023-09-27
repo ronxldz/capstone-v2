@@ -1,17 +1,34 @@
 import React, { useState } from "react";
+import { getAuth, signOut } from "firebase/auth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import SearchIcon from "@mui/icons-material/Search";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { logo } from "../../assets/index";
 import { allItems } from "../../constants";
 import HeaderBottom from "./HeaderBottom";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userSignOut } from "../redux/Slice";
 
 function Header() {
+  const auth = getAuth();
+  const dipatch = useDispatch();
   const [showAll, setShowAll] = useState(false);
   const products = useSelector((state) => state.mercatura.products);
+  const userInfo = useSelector((state) => state.mercatura.userInfo);
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log("sign out");
+        dipatch(userSignOut());
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
 
   return (
     <div className="w-full sticky top-0 z-50">
@@ -62,9 +79,16 @@ function Header() {
         </div>
         <Link to="/signin">
           <div className="flex flex-col items-start justify-center headerHover">
-            <p className="text-sm mdl:text-xs text-white mdl:text-lightText font-light">
-              Hello, sign in
-            </p>
+            {userInfo ? (
+              <p className="text-sm mdl:text-sm text-white mdl:text-lightText font-light">
+                {userInfo.userName}
+              </p>
+            ) : (
+              <p className="text-sm mdl:text-sm text-white mdl:text-lightText font-medium">
+                Hello, sign in
+              </p>
+            )}
+
             <p className="text-sm font-semibold -mt-1 text-whiteText hidden mdl:inline-flex">
               Accounts & Lists{""}
               <span>
@@ -90,6 +114,14 @@ function Header() {
             </p>
           </div>
         </Link>
+        <div
+          onClick={handleLogout}
+          className="flex flex-col justify-center items-center headerHover relative">
+          <LogoutIcon />
+          <p className="hidden mdl:inline-flex text-xs font-semibold text-whiteText">
+            Log out
+          </p>
+        </div>
       </div>
       <HeaderBottom />
     </div>

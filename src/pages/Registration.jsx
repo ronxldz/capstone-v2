@@ -4,8 +4,10 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
+  const navigate = useNavigate();
   const auth = getAuth();
   const [formData, setFormData] = useState({
     clientName: "",
@@ -91,6 +93,9 @@ function Registration() {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          setTimeout(() => {
+            navigate("/signin");
+          }, 3000);
           // ...
         })
         .catch((error) => {

@@ -7,6 +7,7 @@ import Products from "./components/home/Products";
 import SignIn from "./pages/SignIn";
 import Basket from "./pages/Basket";
 import Registration from "./pages/Registration";
+import ProductDetail from "./pages/ProductDetail";
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/signup" element={<Registration />} />
+        {/* <Route path="/product/:productId" component={<ProductDetail />} /> */}
       </Routes>
       <Footer />
     </div>
